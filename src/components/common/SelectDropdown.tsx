@@ -1,29 +1,44 @@
-import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import {
+	FormControl,
+	InputLabel,
+	MenuItem,
+	Select,
+	SelectChangeEvent,
+} from "@mui/material";
 import React from "react";
 
-const SelectDropdown = ({index, action}: {index: number, action?: () => void}) => {
-
-    const [age, setAge] = React.useState("");
+const SelectDropdown = ({
+	index,
+	action,
+	options,
+    placeholder
+}: {
+	index: number;
+	action?: () => void;
+	options?: { label: string; value: string | number }[];
+    placeholder?: string
+}) => {
+	const [decision, setDecision] = React.useState("");
 
 	const handleChange = (event: SelectChangeEvent) => {
-		setAge(event.target.value as string);
-        action && action();
+		setDecision(event.target.value as string);
+		action && action();
 	};
-
 
 	return (
 		<FormControl fullWidth>
-			<InputLabel id={`demo-simple-select-${index}`}>Age</InputLabel>
+			<InputLabel id={`demo-simple-select-${index}`}>{placeholder}</InputLabel>
 			<Select
 				labelId={`demo-simple-select-${index}`}
 				id={`demo-simple-select-${index}`}
-				value={age}
-				label="Age"
+				value={decision}
+				label="Decision"
 				onChange={handleChange}
 			>
-				<MenuItem value={10}>Ten</MenuItem>
-				<MenuItem value={20}>Twenty</MenuItem>
-				<MenuItem value={30}>Thirty</MenuItem>
+				{options &&
+					options?.map((option) => (
+						<MenuItem value={option.value}>{option.label}</MenuItem>
+					))}
 			</Select>
 		</FormControl>
 	);

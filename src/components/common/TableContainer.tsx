@@ -8,13 +8,11 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import {
-	FormControl,
-	InputLabel,
-	MenuItem,
-	Select,
-	SelectChangeEvent,
+	FormControlLabel,
+	Switch,
 } from "@mui/material";
 import SelectDropdown from "./SelectDropdown";
+import InfoIcon from "@mui/icons-material/Info";
 
 interface Column {
 	id: keyof Data;
@@ -51,15 +49,6 @@ const columns: readonly Column[] = [
 		label: "amount",
 		minWidth: 80,
 	},
-	// {
-	//   id: 'active',
-	//   label: 'active',
-	// },
-	// {
-	//   id: 'decision',
-	//   label: 'decision',
-	//   minWidth: 170,
-	// },
 ];
 
 interface Data {
@@ -69,34 +58,6 @@ interface Data {
 	size: number;
 	density: number;
 }
-
-function createData(
-	name: string,
-	code: string,
-	population: number,
-	size: number
-): Data {
-	const density = population / size;
-	return { name, code, population, size, density };
-}
-
-// const rows = [
-//   createData('India', 'IN', 1324171354, 3287263),
-//   createData('China', 'CN', 1403500365, 9596961),
-//   createData('Italy', 'IT', 60483973, 301340),
-//   createData('United States', 'US', 327167434, 9833520),
-//   createData('Canada', 'CA', 37602103, 9984670),
-//   createData('Australia', 'AU', 25475400, 7692024),
-//   createData('Germany', 'DE', 83019200, 357578),
-//   createData('Ireland', 'IE', 4857000, 70273),
-//   createData('Mexico', 'MX', 126577691, 1972550),
-//   createData('Japan', 'JP', 126317000, 377973),
-//   createData('France', 'FR', 67022000, 640679),
-//   createData('United Kingdom', 'GB', 67545757, 242495),
-//   createData('Russia', 'RU', 146793744, 17098246),
-//   createData('Nigeria', 'NG', 200962417, 923768),
-//   createData('Brazil', 'BR', 210147125, 8515767),
-// ];
 
 export default function StickyHeadTable({ data }: any) {
 	const [page, setPage] = React.useState(0);
@@ -117,7 +78,14 @@ export default function StickyHeadTable({ data }: any) {
 		{
 			id: 1,
 			label: "decision",
-			icon: "edit",
+		},
+		{
+			id: 2,
+			label: "status",
+		},
+		{
+			id: 3,
+			label: "Details",
 		},
 	];
 
@@ -145,9 +113,7 @@ export default function StickyHeadTable({ data }: any) {
               ))} */}
 							{actions &&
 								actions?.map((action) => (
-									<TableCell key={action.id}>
-										{action.label}
-									</TableCell>
+									<TableCell key={action.id}>{action.label}</TableCell>
 								))}
 						</TableRow>
 					</TableHead>
@@ -167,12 +133,29 @@ export default function StickyHeadTable({ data }: any) {
 												</TableCell>
 											);
 										})}
-										{actions &&
+										{/* {actions &&
 											actions?.map((action, index) => (
 												<TableCell key={index}>
 													<SelectDropdown index={index} />
 												</TableCell>
-											))}
+											))} */}
+										<TableCell key={0} style={{ minWidth: 120 }}>
+											<SelectDropdown
+												index={0}
+												options={[
+													{ label: "reject", value: "reject" },
+													{ label: "accept", value: "accept" },
+													{ label: "escalate", value: "escalate" },
+												]}
+                        placeholder="not yet"
+											/>
+										</TableCell>
+										<TableCell key={1}>
+											<FormControlLabel control={<Switch />} label="Active" />
+										</TableCell>
+										<TableCell key={3}>
+											<InfoIcon />
+										</TableCell>
 									</TableRow>
 								);
 							})}
