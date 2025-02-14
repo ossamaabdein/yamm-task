@@ -8,6 +8,7 @@
     "@mui/icons-material": "^6.4.4",
     "@mui/material": "^6.4.4",
     "@mui/x-data-grid": "^7.26.0",
+    "axios": "^1.7.9",
     "cra-template": "1.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -41,6 +42,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react": "^19.0.8",
     "web-vitals": "^4.2.4"
   }
 }

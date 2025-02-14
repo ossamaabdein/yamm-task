@@ -1,0 +1,34 @@
+{
+    "orders": [
+        {
+            "id": "id",
+            "label": "id",
+            "minWidth": 50
+          },
+          {
+            "id": "reason",
+            "label": "reason",
+            "minWidth": 100
+          },
+          {
+            "id": "store_name",
+            "label": "store name",
+            "minWidth": 170
+          },
+          {
+            "id": "store_logo",
+            "label": "Store logo",
+            "minWidth": 80
+          },
+          {
+            "id": "store_url",
+            "label": "Store url",
+            "minWidth": 170
+          },
+          {
+            "id": "amount",
+            "label": "amount",
+            "minWidth": 80
+          }
+    ]
+}

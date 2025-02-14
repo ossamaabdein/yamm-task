@@ -1,0 +1,76 @@
+import axios from "axios"
+
+// import { buildFormData } from "./BuildFormData"
+
+export const axiosInstance = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_BASE_API_URL,
+  headers: {
+    Accept: "application/json",
+  },
+})
+
+export const generalGetRequest = async (
+  route: string,
+  params?: Record<string, string | number>,
+  noRedirect?: boolean,
+) => {
+//   const user = Cookies.get("authData")
+
+  try {
+    const response = await axiosInstance.get(route, {
+      params,
+    //   headers: {
+    //     Authorization:`Bearer ${JSON.parse(user).token}`
+    //   },
+    })
+
+    if (response?.data) {
+      return response?.data
+    }
+  } catch (error : any) {
+    if (error.response?.status) {
+      const status = error.response.status
+    }
+
+    throw {
+      data: error.response?.data,
+      message: error.message,
+      status: error.response?.status,
+      statusText: error.response?.statusText,
+    }
+  }
+}
+
+export const generalPostRequest = async (props: {
+  route: string
+  values: object
+  onSuccess?: (res: any) => void
+  onError?: (err?: any) => void
+  onFinish?: () => void
+}) => {
+
+  const {
+    route,
+    values,
+    onSuccess,
+    onError,
+    onFinish,
+  } = props
+  const response = await axiosInstance
+    .post(route, values)
+    .then((res) => {
+      if (onSuccess && (res.status == 201 || res?.status == 200)) onSuccess(res)
+      else if (onError) onError(res)
+      return res.data
+    })
+    .catch((error) => {
+      const status = error?.response?.status
+      console.log(status, "errstatus")
+      if (onError) onError(error)
+      return error?.response?.data
+    })
+    .finally(() => {
+      if (onFinish) onFinish()
+    })
+  return response
+}
