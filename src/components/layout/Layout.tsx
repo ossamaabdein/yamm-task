@@ -18,6 +18,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { Slide, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const drawerWidth = 240;
 
@@ -250,6 +252,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           ))}
         </List>
       </Drawer>
+      <ToastContainer 
+						autoClose= {2000}
+						draggable={false}
+						hideProgressBar={true} 
+						position='bottom-center'
+						transition={Slide}
+					/>
       <Box component="main" sx={{ flexGrow: 1, paddingX: 0, paddingY: 8 }}>
         {children}
       </Box>

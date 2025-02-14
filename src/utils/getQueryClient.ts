@@ -3,13 +3,7 @@ import { cache } from "react"
 
 const getQueryClient = cache(
   () =>
-    new QueryClient({
-      defaultOptions: {
-        queries: {
-          staleTime: 1000 * 60 * 5,
-        },
-      },
-    })
+    new QueryClient()
 )
 
 export default getQueryClient

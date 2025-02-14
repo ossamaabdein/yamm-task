@@ -13,6 +13,8 @@ import {
 } from "@mui/material";
 import SelectDropdown from "./SelectDropdown";
 import InfoIcon from "@mui/icons-material/Info";
+import { generalPutRequest } from "../../utils/SendRequest";
+import { toast } from "react-toastify";
 
 interface Column {
 	id: keyof Data;
@@ -20,6 +22,7 @@ interface Column {
 	minWidth?: number;
 	align?: "right";
 	format?: (value: number) => string;
+	totalCount?: number
 }
 
 interface Data {
@@ -59,32 +62,36 @@ interface Data {
 	density: number;
 }
 
-export default function GeneralTable({ data }: any) {
+export default function GeneralTable({ data, setActivePage, activePage, totalCount, setRowsPerPage, rowsPerPage }: any) {
 	const [page, setPage] = React.useState(0);
-	const [rowsPerPage, setRowsPerPage] = React.useState(10);
+	// const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
 	const handleChangePage = (event: unknown, newPage: number) => {
-		setPage(newPage);
+		// setPage(newPage);
+		console.log(newPage, "newPage");
+		
+		setActivePage(newPage);
 	};
 
 	const handleChangeRowsPerPage = (
 		event: React.ChangeEvent<HTMLInputElement>
 	) => {
 		setRowsPerPage(+event.target.value);
-		setPage(0);
+		// setPage(0);
+		// setActivePage(page + 1);
 	};
 
 	const actions = [
 		{
-			id: 1,
+			id: "decision",
 			label: "decision",
 		},
 		{
-			id: 2,
+			id: "status",
 			label: "status",
 		},
 		{
-			id: 3,
+			id: "details",
 			label: "Details",
 		},
 	];
@@ -118,15 +125,14 @@ export default function GeneralTable({ data }: any) {
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{data
-							.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-							.map((row: any) => {
+						{data?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+							?.map((row: any) => {
 								return (
-									<TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+									<TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
 										{columns.map((column) => {
 											const value = row?.[column.id];
 											return (
-												<TableCell key={column.id} align={column.align}>
+												<TableCell key={row?.id} align={column.align}>
 													{column.format && typeof value === "number"
 														? column.format(value)
 														: value}
@@ -147,7 +153,21 @@ export default function GeneralTable({ data }: any) {
 													{ label: "accept", value: "accept" },
 													{ label: "escalate", value: "escalate" },
 												]}
-                        placeholder="not yet"
+                        						placeholder="not yet"
+												action={() => {
+													generalPutRequest({
+														route: `/orders/${row?.id}`,
+														values: { 
+															...row,
+															decision: "accept" },
+															onSuccess: () => {
+																toast.success('Decision changed successfully');
+															},
+															onError: () => {
+																toast.error('Something went wrong, please try again.')
+															}
+													})
+												}}
 											/>
 										</TableCell>
 										<TableCell key={1}>
@@ -163,12 +183,13 @@ export default function GeneralTable({ data }: any) {
 				</Table>
 			</TableContainer>
 			<TablePagination
-				rowsPerPageOptions={[10, 25, 100]}
+				rowsPerPageOptions={[10, 15]}
 				component="div"
 				// count={rows.length}
-				count={data.length}
+				// count={data.length}
+				count={totalCount}
 				rowsPerPage={rowsPerPage}
-				page={page}
+				page={activePage}
 				onPageChange={handleChangePage}
 				onRowsPerPageChange={handleChangeRowsPerPage}
 			/>
