@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-// import TableContainer from "../common/TableContainer.tsx";
 import { Order } from "./interfaces";
-import StickyHeadTable from "../common/TableContainer";
-import GeneralTable from "../common/TableContainer";
+import GeneralTable from "../common/GeneralTable";
 
 export const OrdersContainer = () => {
 	const tableHeaders = [
@@ -139,26 +137,8 @@ export const OrdersContainer = () => {
 			],
 		},
 	];
-
-	const [ordersList, setordersList] = useState(data);
-	const [shownList, setShownList] = useState();
-	const [refetchData, setRefetchData] = useState(false);
-
 	return (
-		<div>
-			{/* <TableContainer
-				allData={ordersList}
-				setShownList={setShownList}
-				tableHeaders={tableHeaders}
-				data={shownList}
-				noDataMessage={"No tournaments found"}
-				setRefetchData={setRefetchData}
-				// searchInput={searchInput}
-			/> */}
-			{/* <MiniDrawer> */}
 				<GeneralTable data={data}/>
-			{/* </MiniDrawer> */}
-			{/* <StickyHeadTable /> */}
-		</div>
+
 	);
 };
