@@ -14,8 +14,8 @@ export const generalGetRequest = async (
 ) => {
 
   try {
-    const response = await axiosInstance.get(route, {params})
-
+    const response: any = await axiosInstance.get(route, {params})
+    
     if (response?.data) {
       return response?.data
     }
@@ -58,6 +58,39 @@ export const generalPostRequest = async (props: {
     .catch((error) => {
       const status = error?.response?.status
       console.log(status, "errstatus")
+      if (onError) onError(error)
+      return error?.response?.data
+    })
+    .finally(() => {
+      if (onFinish) onFinish()
+    })
+  return response
+}
+
+export const generalPutRequest = async (props: {
+  route: string
+  values?: object
+  auth?: boolean
+  onSuccess?: (res: any) => void
+  onError?: (err?: any) => void
+  onFinish?: () => void
+}) => {
+  const { route, values, onSuccess, onError, onFinish } = props
+  // const formData = new FormData()
+  const response = await axiosInstance
+    .put(route, values, {
+      headers: {
+        // Authorization: props.auth ? `Bearer ${JSON.parse(user).token}` : "",
+        "Content-Type": "application/json",
+      },
+    })
+    .then((res) => {
+      console.log(res)
+      if (onSuccess && (res.status == 201 || res?.status == 200)) onSuccess(res)
+      else if (onError) onError(res)
+      return res.data
+    })
+    .catch((error) => {
       if (onError) onError(error)
       return error?.response?.data
     })
