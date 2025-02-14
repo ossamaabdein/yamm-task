@@ -59,7 +59,7 @@ interface Data {
 	density: number;
 }
 
-export default function StickyHeadTable({ data }: any) {
+export default function GeneralTable({ data }: any) {
 	const [page, setPage] = React.useState(0);
 	const [rowsPerPage, setRowsPerPage] = React.useState(10);
 

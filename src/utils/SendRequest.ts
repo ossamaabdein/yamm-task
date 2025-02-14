@@ -1,9 +1,8 @@
 import axios from "axios"
 
-// import { buildFormData } from "./BuildFormData"
-
 export const axiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BASE_API_URL,
+//   baseURL: process.env.NEXT_PUBLIC_BASE_API_URL,
+  baseURL: "http://localhost:3030",
   headers: {
     Accept: "application/json",
   },
@@ -12,17 +11,10 @@ export const axiosInstance = axios.create({
 export const generalGetRequest = async (
   route: string,
   params?: Record<string, string | number>,
-  noRedirect?: boolean,
 ) => {
-//   const user = Cookies.get("authData")
 
   try {
-    const response = await axiosInstance.get(route, {
-      params,
-    //   headers: {
-    //     Authorization:`Bearer ${JSON.parse(user).token}`
-    //   },
-    })
+    const response = await axiosInstance.get(route, {params})
 
     if (response?.data) {
       return response?.data

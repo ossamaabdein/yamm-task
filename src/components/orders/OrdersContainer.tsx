@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import TableContainer from "../common/TableContainer.tsx";
 import { Order } from "./interfaces";
 import StickyHeadTable from "../common/TableContainer";
-import MiniDrawer from "../common/DashboardLayout";
+import GeneralTable from "../common/TableContainer";
 
 export const OrdersContainer = () => {
 	const tableHeaders = [
@@ -155,9 +155,9 @@ export const OrdersContainer = () => {
 				setRefetchData={setRefetchData}
 				// searchInput={searchInput}
 			/> */}
-			<MiniDrawer>
-				<StickyHeadTable data={data}/>
-			</MiniDrawer>
+			{/* <MiniDrawer> */}
+				<GeneralTable data={data}/>
+			{/* </MiniDrawer> */}
 			{/* <StickyHeadTable /> */}
 		</div>
 	);
