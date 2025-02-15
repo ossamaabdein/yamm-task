@@ -1,4 +1,4 @@
-import React, { act, useState } from "react";
+import React from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,14 +7,13 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import {
-	FormControlLabel,
-	Switch,
-} from "@mui/material";
+import { FormControlLabel, Switch } from "@mui/material";
 import SelectDropdown from "./SelectDropdown";
 import InfoIcon from "@mui/icons-material/Info";
 import { generalPutRequest } from "../../utils/SendRequest";
 import { toast } from "react-toastify";
+import { ITable } from "./interfaces";
+import { Order } from "../orders/interfaces";
 
 interface Column {
 	id: keyof Data;
@@ -22,7 +21,7 @@ interface Column {
 	minWidth?: number;
 	align?: "right";
 	format?: (value: number) => string;
-	totalCount?: number
+	totalCount?: number;
 }
 
 interface Data {
@@ -62,14 +61,22 @@ interface Data {
 	density: number;
 }
 
-export default function GeneralTable({ data, setActivePage, activePage, totalCount, setRowsPerPage, rowsPerPage }: any) {
+export default function GeneralTable({
+	data,
+	setActivePage,
+	activePage,
+	totalCount,
+	setRowsPerPage,
+	rowsPerPage,
+	setRefetchData,
+}: ITable) {
 	const [page, setPage] = React.useState(0);
 	// const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
 	const handleChangePage = (event: unknown, newPage: number) => {
 		// setPage(newPage);
 		console.log(newPage, "newPage");
-		
+
 		setActivePage(newPage);
 	};
 
@@ -96,6 +103,26 @@ export default function GeneralTable({ data, setActivePage, activePage, totalCou
 		},
 	];
 
+	const handleUpdateOrder = (
+		keyToChange: string,
+		updatedValue: any,
+		row: Order,
+	) => {
+		generalPutRequest({
+			route: `/orders/${row?.id}`,
+			values: {
+				...row,
+				[keyToChange]: updatedValue,
+			},
+			onSuccess: () => {
+				toast.success("Decision changed successfully");
+				setRefetchData && setRefetchData(new Date().getTime());
+			},
+			onError: () => {
+				toast.error("Something went wrong, please try again.");
+			},
+		});
+	};
 	return (
 		<Paper sx={{ width: "100%", overflow: "hidden" }}>
 			<TableContainer sx={{ maxHeight: 440 }}>
@@ -125,68 +152,62 @@ export default function GeneralTable({ data, setActivePage, activePage, totalCou
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{data?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-							?.map((row: any) => {
-								return (
-									<TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
-										{columns.map((column) => {
-											const value = row?.[column.id];
-											return (
-												<TableCell key={row?.id} align={column.align}>
-													{column.format && typeof value === "number"
-														? column.format(value)
-														: value}
-												</TableCell>
-											);
-										})}
-										{/* {actions &&
+						{data?.map((row: any) => {
+							return (
+								<TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+									{columns.map((column) => {
+										const value = row?.[column.id];
+										return (
+											<TableCell key={row?.id} align={column.align}>
+												{column.format && typeof value === "number"
+													? column.format(value)
+													: value}
+											</TableCell>
+										);
+									})}
+									{/* {actions &&
 											actions?.map((action, index) => (
 												<TableCell key={index}>
 													<SelectDropdown index={index} />
 												</TableCell>
 											))} */}
-										<TableCell key={0} style={{ minWidth: 120 }}>
-											<SelectDropdown
-												index={0}
-												options={[
-													{ label: "reject", value: "reject" },
-													{ label: "accept", value: "accept" },
-													{ label: "escalate", value: "escalate" },
-												]}
-                        						placeholder="not yet"
-												action={() => {
-													generalPutRequest({
-														route: `/orders/${row?.id}`,
-														values: { 
-															...row,
-															decision: "accept" },
-															onSuccess: () => {
-																toast.success('Decision changed successfully');
-															},
-															onError: () => {
-																toast.error('Something went wrong, please try again.')
-															}
-													})
-												}}
-											/>
-										</TableCell>
-										<TableCell key={1}>
-											<FormControlLabel control={<Switch />} label="Active" />
-										</TableCell>
-										<TableCell key={3}>
-											<InfoIcon />
-										</TableCell>
-									</TableRow>
-								);
-							})}
+									<TableCell key={0} style={{ minWidth: 120 }}>
+										<SelectDropdown
+											index={0}
+											options={[
+												{ label: "reject", value: "reject" },
+												{ label: "accept", value: "accept" },
+												{ label: "escalate", value: "escalate" },
+											]}
+											placeholder="Decision"
+											row={row}
+											keyToChange={"decision"}
+											action={handleUpdateOrder}
+										/>
+									</TableCell>
+									<TableCell key={1}>
+										<FormControlLabel
+											onChange={(e: any) => {
+												// alert(e.target.value);
+												handleUpdateOrder("active", !e.target.value, row);
+											}}
+											checked={row?.active}
+											control={<Switch />}
+											label="Active"
+										/>
+									</TableCell>
+									<TableCell key={3}>
+										<InfoIcon />
+									</TableCell>
+								</TableRow>
+							);
+						})}
 					</TableBody>
 				</Table>
 			</TableContainer>
 			<TablePagination
 				rowsPerPageOptions={[10, 15]}
 				component="div"
-				// count={rows.length}
-				// count={data.length}
 				count={totalCount}
 				rowsPerPage={rowsPerPage}
 				page={activePage}

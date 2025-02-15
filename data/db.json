@@ -7,8 +7,8 @@
       "store_logo": "https://via.placeholder.com/150",
       "store_url": "https://via.placeholder.com/150",
       "amount": 100,
-      "active": true,
-      "decision": "accept",
+      "active": false,
+      "decision": "reject",
       "items": [
         {
           "name": "Item 1",
@@ -31,7 +31,7 @@
       "store_logo": "https://via.placeholder.com/150",
       "store_url": "https://via.placeholder.com/150",
       "amount": 100,
-      "active": true,
+      "active": false,
       "decision": "accept",
       "items": [
         {
@@ -55,8 +55,8 @@
       "store_logo": "https://via.placeholder.com/150",
       "store_url": "https://via.placeholder.com/150",
       "amount": 100,
-      "active": true,
-      "decision": null,
+      "active": false,
+      "decision": "escalate",
       "items": [
         {
           "name": "Item 1",
@@ -104,7 +104,7 @@
       "store_url": "https://via.placeholder.com/150",
       "amount": 100,
       "active": true,
-      "decision": null,
+      "decision": "reject",
       "items": [
         {
           "name": "Item 1",

@@ -7,13 +7,14 @@ import { TableSkeleton } from "../components/common/TableSkeleton";
 const Orders = () => {
 	const [activePage, setActivePage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [refetchData, setRefetchData] = useState(false);
 
 	useEffect(() => {
 		console.log(activePage, rowsPerPage, "ROTTT");
 	}, [activePage, rowsPerPage]);
 
-	const { data, isSuccess, isLoading } = useQuery({
-		queryKey: ["orders-data", activePage, rowsPerPage],
+	const { data, isLoading } = useQuery({
+		queryKey: ["orders-data", activePage, rowsPerPage, refetchData],
 		queryFn: () =>
 			generalGetRequest(
 				`orders?_page=${activePage + 1}&_per_page=${rowsPerPage}`
@@ -24,7 +25,6 @@ const Orders = () => {
 		return <TableSkeleton rowsNum={rowsPerPage} colsNum={10} />;
 	}
 	return (
-		<div>
 			<GeneralTable
 				data={data?.data}
 				totalCount={data?.items}
@@ -32,8 +32,8 @@ const Orders = () => {
 				activePage={activePage}
 				setRowsPerPage={setRowsPerPage}
 				rowsPerPage={rowsPerPage}
+        setRefetchData={setRefetchData}
 			/>
-		</div>
 	);
 };
 

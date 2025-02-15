@@ -5,24 +5,29 @@ import {
 	Select,
 	SelectChangeEvent,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
+import { Order } from "../orders/interfaces";
 
 const SelectDropdown = ({
 	index,
 	action,
 	options,
-    placeholder
+    placeholder,
+	row,
+	keyToChange
 }: {
 	index: number;
-	action?: () => void;
+	action?: (key: string, updatedValue: any, row: Order) => void;
 	options?: { label: string; value: string | number }[];
     placeholder?: string
+	row?: any
+	keyToChange: string
 }) => {
-	const [decision, setDecision] = React.useState("");
+	const [decision, setDecision] = useState(row?.decision || "");
 
 	const handleChange = (event: SelectChangeEvent) => {
 		setDecision(event.target.value as string);
-		action && action();
+		action && action(keyToChange, event.target.value as string, row);
 	};
 
 	return (
