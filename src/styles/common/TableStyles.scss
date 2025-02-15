@@ -67,3 +67,49 @@
         }
     }
 }
+
+@media (max-width: 1440px) {
+    .MuiBox-root {
+        .MuiPaper-root {
+            .MuiTableContainer-root {
+                .MuiTableBody-root {
+                    .MuiTableRow-root {
+                        .MuiTableCell-root  {
+                            img {
+                                width: 70px;
+                            }
+                            max-width: 20ch;
+                            .MuiFormControl-root {
+                                .MuiInputLabel-root {
+                                    font-size: 0.875rem;
+                                }
+                            }
+                            .MuiTypography-root {
+                                font-size: 0.875rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1366px) {
+    .MuiBox-root {
+        .MuiPaper-root {
+            .MuiTableContainer-root {
+                .MuiTableBody-root {
+                    .MuiTableRow-root {
+                        .MuiTableCell-root  {
+                            img {
+                                width: 60px;
+                            }
+                            max-width: 20ch;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
