@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import InfoIcon from "@mui/icons-material/Info";
 import { FormControlLabel, Switch } from "@mui/material";
+import NoDataFoundComponent from "../components/common/NoDataFoundComponent";
 
 const Orders = () => {
 	const [activePage, setActivePage] = useState(0);
@@ -21,7 +22,10 @@ const Orders = () => {
 		queryFn: () =>
 			generalGetRequest(
 				`orders?_page=${activePage + 1}&_per_page=${rowsPerPage}`
-			),
+			)
+			.catch(() => {
+				toast.error("Something went wrong, please try again.");
+			}),
 	});
 
 	const handleOrderUpdate = (
@@ -121,7 +125,11 @@ const Orders = () => {
 
 	if (isLoading) {
 		return <TableSkeleton rowsNum={rowsPerPage} colsNum={10} />;
-	}
+	} else if (!data) {
+		return (
+			<NoDataFoundComponent />
+		)
+	} 
 	return (
 		<GeneralTable
 			data={data?.data}
