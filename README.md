@@ -30,10 +30,16 @@ Run the project
   npm start
 ``` 
 
-Run the json-server (USE PORT 3030)
+Make sure you have json-server installed on your machine
+If not, install it.
 
 ```bash
-  json-server data/db.json --port 3030
+  npm i json-server
+``` 
+Run the json-server (I have already added its script in package.json)
+
+```bash
+  npm run json-server
 ``` 
 ## Usage/Examples
 
