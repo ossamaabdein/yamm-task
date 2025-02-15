@@ -16,7 +16,7 @@ import AssessmentIcon from '@mui/icons-material/Assessment';
 import SettingsIcon from '@mui/icons-material/Settings';
 import KeyIcon from '@mui/icons-material/Key';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { yammLogo } from "../../utils/icons";
 
 const SideNav = () => {
@@ -77,6 +77,7 @@ const SideNav = () => {
 		],
 	}));
 
+	const location = useLocation();	
 
     const navMenu = [
         {
@@ -92,27 +93,27 @@ const SideNav = () => {
         {
             name: "Stores",
             icon: <LocalGroceryStoreIcon />,
-            path: "/",
+            path: "#",
         },
         {
             name: "Reports",
             icon: <AssessmentIcon />,
-            path: "/",
+            path: "#",
         },
         {
             name: "Permissions",
             icon: <KeyIcon />,
-            path: "/",
+            path: "#",
         },
         {
             name: "Settings",
             icon: <SettingsIcon />,
-            path: "/",
+            path: "#",
         }, 
         {
             name: "Logout",
             icon: <LogoutIcon />,
-            path: "/",
+            path: "#",
         }
     ]
 
@@ -124,10 +125,10 @@ const SideNav = () => {
 				</div>
 			</DrawerHeader>
 			<Divider />
-			<List>
+			<List disablePadding>
 				{navMenu?.slice(0, 4)?.map((item) => (
 					<Link to={item?.path} key={item?.name}>
-						<ListItem disablePadding sx={{ display: "block" }}>
+						<ListItem disablePadding sx={{ display: "block",backgroundColor: location.pathname === item?.path ? "rgba(0, 0, 0, 0.05)" : "", }}>
 							<ListItemButton>
 								<ListItemIcon>
 									{item?.icon}

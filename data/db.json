@@ -49,7 +49,7 @@
       "store_logo": "https://media.zid.store/c05c0390-147b-456d-a367-d2600f2db848/87e960ab-7464-4a24-8a5a-b9ae97414b1e-200x.png",
       "store_url": "https://sayyar.com/",
       "amount": 300,
-      "active": true,
+      "active": false,
       "decision": "escalate",
       "items": [
         {
