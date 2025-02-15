@@ -49,7 +49,12 @@ const columns: readonly Column[] = [
 	{
 		id: "amount",
 		label: "amount",
-		minWidth: 80,
+		minWidth: 50,
+	},
+	{
+		id: "items",
+		label: "items",
+		minWidth: 50,
 	},
 ];
 
@@ -69,14 +74,10 @@ export default function GeneralTable({
 	setRowsPerPage,
 	rowsPerPage,
 	setRefetchData,
-}: ITable) {
-	const [page, setPage] = React.useState(0);
-	// const [rowsPerPage, setRowsPerPage] = React.useState(10);
+	renderImgKeys,
+}: ITable & { renderImgKeys?: (keyof Data)[] }) {
 
 	const handleChangePage = (event: unknown, newPage: number) => {
-		// setPage(newPage);
-		console.log(newPage, "newPage");
-
 		setActivePage(newPage);
 	};
 
@@ -84,8 +85,6 @@ export default function GeneralTable({
 		event: React.ChangeEvent<HTMLInputElement>
 	) => {
 		setRowsPerPage(+event.target.value);
-		// setPage(0);
-		// setActivePage(page + 1);
 	};
 
 	const actions = [
@@ -156,12 +155,21 @@ export default function GeneralTable({
 							return (
 								<TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
 									{columns.map((column) => {
-										const value = row?.[column.id];
+										const value = row?.[column.id];										
 										return (
-											<TableCell key={row?.id} align={column.align}>
-												{column.format && typeof value === "number"
-													? column.format(value)
-													: value}
+											<TableCell key={row.id} align={column.align}>
+												{Array.isArray(value) ? (
+													<span>{value.length}</span>
+												) : renderImgKeys &&
+												  renderImgKeys?.includes(column.id) ? (
+													<img
+														className="store_logo"
+														src={value}
+														alt={row?.name}
+													/>
+												) : (
+													value
+												)}
 											</TableCell>
 										);
 									})}
@@ -188,7 +196,6 @@ export default function GeneralTable({
 									<TableCell key={1}>
 										<FormControlLabel
 											onChange={(e: any) => {
-												// alert(e.target.value);
 												handleUpdateOrder("active", !e.target.value, row);
 											}}
 											checked={row?.active}
