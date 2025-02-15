@@ -181,9 +181,10 @@ export default function GeneralTable({
 										<SelectDropdown
 											index={0}
 											options={[
-												{ label: "reject", value: "reject" },
-												{ label: "accept", value: "accept" },
-												{ label: "escalate", value: "escalate" },
+												{ label: "None", value: "" },
+												{ label: "Reject", value: "reject" },
+												{ label: "Accept", value: "accept" },
+												{ label: "Escalate", value: "escalate" },
 											]}
 											placeholder="Decision"
 											row={row}
@@ -197,7 +198,7 @@ export default function GeneralTable({
 												handleUpdateOrder("active", !row?.active, row);
 											}}
 											checked={row?.active}
-											control={<Switch />}
+											control={<Switch  color="success"/>}
 											label="Active"
 										/>
 									</TableCell>
