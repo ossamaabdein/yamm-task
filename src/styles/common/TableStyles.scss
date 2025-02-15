@@ -28,8 +28,10 @@
 }
 
 .MuiBox-root {
+    max-height: 100vh;
     .MuiPaper-root {
         .MuiTableContainer-root {
+            max-height: calc(100vh - 118px);
             .MuiTableHead-root {
                 th {
                     text-transform: capitalize;
