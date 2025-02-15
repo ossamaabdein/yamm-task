@@ -1,0 +1,43 @@
+.MuiDrawer-root {
+    .MuiPaper-root {
+        background-image: url('../../../public/bg.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        transition: width 2s ease-in-out;
+        .drawerHeader {
+            justify-content: space-between;
+            .logo {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+                width: 85%;
+                height: 100%;
+                svg {
+                    width: 80%;
+                    height: 35px;
+                }
+            }
+        }
+        a {
+            text-decoration: none;
+            color: unset;
+        }
+    }
+}
+
+.MuiBox-root {
+    .MuiPaper-root {
+        .MuiTableContainer-root {
+            .MuiTableHead-root {
+                th {
+                    text-transform: capitalize;
+                    color: rgb(121, 78, 219);
+                    font-weight: 600;
+                    background-color: rgb(242 237 254);
+                }
+            }
+        }
+    }
+}
