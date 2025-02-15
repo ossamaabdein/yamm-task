@@ -29,7 +29,6 @@ const Orders = () => {
 		updatedValue: any,
 		row: Order
 	) => {
-		console.log(keyToChange, updatedValue, row, "DDDDD");
 		generalPutRequest({
 			route: `/orders/${row?.id}`,
 			values: {

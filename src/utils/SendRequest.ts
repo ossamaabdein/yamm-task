@@ -55,7 +55,7 @@ export const generalPostRequest = async (props: {
     })
     .catch((error) => {
       const status = error?.response?.status
-      console.log(status, "errstatus")
+      // console.log(status, "errstatus")
       if (onError) onError(error)
       return error?.response?.data
     })
@@ -81,7 +81,7 @@ export const generalPutRequest = async (props: {
       },
     })
     .then((res) => {
-      console.log(res)
+      // console.log(res)
       if (onSuccess && (res.status == 201 || res?.status == 200)) onSuccess(res)
       else if (onError) onError(res)
       return res.data

@@ -6,7 +6,7 @@ const OrderItems = ({data}: {data: Order }) => {
     <div className='items'>
             <h3>Order Items</h3>
             {data?.items.map((item: any, index: number) => (
-                <div className='item'>
+                <div className='item' key={index}>
                     <div className='info no'>
                         <span className='label'>No.</span>
                         <span className='value'>{index + 1}</span>

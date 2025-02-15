@@ -46,8 +46,6 @@ export default function GeneralTable({
 		return value;
 	};
 
-	console.log(columns, data, "datadata");
-
 	return (
 		<Paper sx={{ width: "100%", overflow: "hidden" }}>
 			<TableContainer sx={{ maxHeight: 600 }}>
