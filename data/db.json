@@ -2,118 +2,100 @@
   "orders": [
     {
       "id": "1",
-      "reason": "x",
+      "reason": "Product arrived damaged and unusable.",
       "store_name": "Dkhoon Emirates",
       "store_logo": "https://media.zid.store/706d9094-6596-4a2d-a51c-684cae1ad600/7ed1791e-5be2-4747-be13-1290b9a592be.svg",
       "store_url": "https://dkhoonemirates.com/",
-      "amount": 125,
+      "amount": 250,
       "active": false,
-      "decision": "reject",
+      "decision": "accept",
       "items": [
         {
-          "name": "Item 1",
+          "name": "Perfume A",
           "id": "1",
-          "price": 100,
+          "price": 150,
           "quantity": 1
         },
         {
-          "name": "Item 2",
+          "name": "Oil Blend B",
           "id": "2",
-          "price": 26,
+          "price": 100,
           "quantity": 1
         }
       ]
     },
     {
       "id": "2",
-      "reason": "x",
+      "reason": "Received the wrong item instead of what was ordered.",
       "store_name": "Top Tato",
       "store_logo": "https://dev-yamm-be-bucket.s3.ap-south-1.amazonaws.com/stores/17207125433519953418ad6a27561ce7c2d0b62922.png",
       "store_url": "https://toptato.com",
-      "amount": 100,
-      "active": false,
-      "decision": "accept",
+      "amount": 180,
+      "active": true,
+      "decision": "escalate",
       "items": [
         {
-          "name": "Item 1",
+          "name": "Tattoo Kit X",
           "id": "1",
-          "price": 100,
-          "quantity": 1
-        },
-        {
-          "name": "Item 2",
-          "id": "2",
-          "price": 100,
-          "quantity": 1
+          "price": 90,
+          "quantity": 2
         }
       ]
     },
     {
       "id": "3",
-      "reason": "x",
+      "reason": "Item was defective and did not function as expected.",
       "store_name": "سيار | Sayyar",
       "store_logo": "https://media.zid.store/c05c0390-147b-456d-a367-d2600f2db848/87e960ab-7464-4a24-8a5a-b9ae97414b1e-200x.png",
       "store_url": "https://sayyar.com/",
-      "amount": 100,
-      "active": false,
+      "amount": 300,
+      "active": true,
       "decision": "escalate",
       "items": [
         {
-          "name": "Item 1",
+          "name": "Car Accessory A",
           "id": "1",
-          "price": 100,
-          "quantity": 1
-        },
-        {
-          "name": "Item 2",
-          "id": "2",
-          "price": 100,
-          "quantity": 1
+          "price": 150,
+          "quantity": 2
         }
       ]
     },
     {
       "id": "4",
-      "reason": "x",
+      "reason": "Item did not match the description on the website.",
       "store_name": "Mawsim",
       "store_logo": "https://dev-yamm-be-bucket.s3.ap-south-1.amazonaws.com/stores/173324148404320e6d5c8899ed6fae19974b9d0350.png",
       "store_url": "https://mawsim.app",
-      "amount": 100,
-      "active": true,
-      "decision": null,
+      "amount": 120,
+      "active": false,
+      "decision": "escalate",
       "items": [
         {
-          "name": "Item 1",
+          "name": "Scarf Y",
           "id": "1",
-          "price": 100,
-          "quantity": 1
-        },
-        {
-          "name": "Item 2",
-          "id": "2",
-          "price": 100,
-          "quantity": 1
+          "price": 120,
+          "quantity": 2
         }
       ]
     },
     {
       "id": "5",
-      "reason": "x",
+      "reason": "Size was incorrect despite ordering the correct one.",
       "store_name": "Jolina",
       "store_logo": "https://cdn.salla.sa/GgXea/3UUCeWYVK3UvbP86qxrZFHVEUe011YtUqsOigqPU.png",
       "store_url": "https://jolinafashion.com",
-      "amount": 100,
+      "amount": 230,
       "active": true,
-      "decision": "reject",
+      "decision": "escalate",
       "items": [
         {
-          "name": "Item 1",
+          "name": "Dress A",
           "id": "1",
-          "price": 100,
+          "price": 130,
           "quantity": 1
         },
         {
-          "name": "Item 2",
+          "name": "Jacket B",
           "id": "2",
           "price": 100,
           "quantity": 1
@@ -122,59 +104,265 @@
     },
     {
       "id": "6",
-      "reason": "x",
+      "reason": "Order was delayed beyond the estimated delivery time.",
       "store_name": "ورزان - WARAZAN",
-      "amount": 150,
+      "amount": 190,
       "store_logo": "https://media.zid.store/455317b3-0ba1-4870-8c41-3eb175b55227/a1dfa7a7-6659-4848-a946-29be3df008bd-200x.png",
       "store_url": "https://warazan.com/",
       "active": true,
-      "decision": null,
-      "items": []
+      "decision": "escalate",
+      "items": [
+        {
+          "name": "Book A",
+          "id": "1",
+          "price": 190,
+          "quantity": 2
+        }
+      ]
     },
     {
       "id": "7",
-      "reason": "x",
+      "reason": "Product had missing accessories/components.",
       "store_name": "سيار | Sayyar",
       "store_logo": "https://media.zid.store/c05c0390-147b-456d-a367-d2600f2db848/87e960ab-7464-4a24-8a5a-b9ae97414b1e-200x.png",
       "store_url": "https://sayyar.com/",
-      "amount": 100,
-      "active": false,
-      "decision": "accept",
+      "amount": 110,
+      "active": true,
+      "decision": "escalate",
       "items": [
         {
-          "name": "Item 1",
+          "name": "Car Cover",
           "id": "1",
-          "price": 100,
+          "price": 110,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "reason": "Ordered by mistake and requested cancellation immediately.",
+      "store_name": "ORA",
+      "store_logo": "https://media.zid.store/fcac0c41-859f-43ff-bc01-9dcfcb9a74f2/0b137c8b-c603-4398-8baa-b91eb34e8a49-200x.png",
+      "store_url": "https://oraonline.net/",
+      "amount": 140,
+      "active": true,
+      "decision": "escalate",
+      "items": [
+        {
+          "name": "Shoes A",
+          "id": "1",
+          "price": 140,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "reason": "Received a different color than ordered.",
+      "store_name": "Dkhoon Emirates",
+      "store_logo": "https://media.zid.store/706d9094-6596-4a2d-a51c-684cae1ad600/7ed1791e-5be2-4747-be13-1290b9a592be.svg",
+      "store_url": "https://dkhoonemirates.com/",
+      "amount": 85,
+      "active": false,
+      "decision": "escalate",
+      "items": [
+        {
+          "name": "T-shirt Red",
+          "id": "1",
+          "price": 85,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "reason": "Found a better price elsewhere after purchase.",
+      "store_name": "ORA",
+      "store_logo": "https://media.zid.store/fcac0c41-859f-43ff-bc01-9dcfcb9a74f2/0b137c8b-c603-4398-8baa-b91eb34e8a49-200x.png",
+      "store_url": "https://oraonline.net/",
+      "amount": 350,
+      "active": true,
+      "decision": "escalate",
+      "items": [
+        {
+          "name": "Headphones X",
+          "id": "1",
+          "price": 350,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "reason": "Item did not match the description on the website.",
+      "store_name": "Mawsim",
+      "store_logo": "https://dev-yamm-be-bucket.s3.ap-south-1.amazonaws.com/stores/173324148404320e6d5c8899ed6fae19974b9d0350.png",
+      "store_url": "https://mawsim.app",
+      "amount": 120,
+      "active": true,
+      "decision": "escalate",
+      "items": [
+        {
+          "name": "Scarf Y",
+          "id": "1",
+          "price": 120,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "reason": "Size was incorrect despite ordering the correct one.",
+      "store_name": "Jolina",
+      "store_logo": "https://cdn.salla.sa/GgXea/3UUCeWYVK3UvbP86qxrZFHVEUe011YtUqsOigqPU.png",
+      "store_url": "https://jolinafashion.com",
+      "amount": 230,
+      "active": true,
+      "decision": "escalate",
+      "items": [
+        {
+          "name": "Dress A",
+          "id": "1",
+          "price": 130,
           "quantity": 1
         },
         {
-          "name": "Item 2",
+          "name": "Jacket B",
           "id": "2",
           "price": 100,
           "quantity": 1
         }
       ]
-    }, {
-      "id": "8",
-      "reason": "x",
+    },
+    {
+      "id": "13",
+      "reason": "Order was delayed beyond the estimated delivery time.",
+      "store_name": "ورزان - WARAZAN",
+      "amount": 190,
+      "store_logo": "https://media.zid.store/455317b3-0ba1-4870-8c41-3eb175b55227/a1dfa7a7-6659-4848-a946-29be3df008bd-200x.png",
+      "store_url": "https://warazan.com/",
+      "active": true,
+      "decision": "escalate",
+      "items": [
+        {
+          "name": "Book A",
+          "id": "1",
+          "price": 190,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "reason": "Ordered by mistake and requested cancellation immediately.",
       "store_name": "ORA",
       "store_logo": "https://media.zid.store/fcac0c41-859f-43ff-bc01-9dcfcb9a74f2/0b137c8b-c603-4398-8baa-b91eb34e8a49-200x.png",
       "store_url": "https://oraonline.net/",
-      "amount": 100,
+      "amount": 140,
       "active": false,
-      "decision": "accept",
+      "decision": "escalate",
       "items": [
         {
-          "name": "Item 1",
+          "name": "Shoes A",
           "id": "1",
-          "price": 100,
+          "price": 140,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "reason": "Received a different color than ordered.",
+      "store_name": "Dkhoon Emirates",
+      "store_logo": "https://media.zid.store/706d9094-6596-4a2d-a51c-684cae1ad600/7ed1791e-5be2-4747-be13-1290b9a592be.svg",
+      "store_url": "https://dkhoonemirates.com/",
+      "amount": 85,
+      "active": false,
+      "decision": "escalate",
+      "items": [
+        {
+          "name": "T-shirt Red",
+          "id": "1",
+          "price": 85,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "reason": "Found a better price elsewhere after purchase.",
+      "store_name": "ORA",
+      "store_logo": "https://media.zid.store/fcac0c41-859f-43ff-bc01-9dcfcb9a74f2/0b137c8b-c603-4398-8baa-b91eb34e8a49-200x.png",
+      "store_url": "https://oraonline.net/",
+      "amount": 350,
+      "active": true,
+      "decision": "escalate",
+      "items": [
+        {
+          "name": "Headphones X",
+          "id": "1",
+          "price": 350,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "reason": "Product arrived damaged and unusable.",
+      "store_name": "Dkhoon Emirates",
+      "store_logo": "https://media.zid.store/706d9094-6596-4a2d-a51c-684cae1ad600/7ed1791e-5be2-4747-be13-1290b9a592be.svg",
+      "store_url": "https://dkhoonemirates.com/",
+      "amount": 250,
+      "active": false,
+      "decision": "escalate",
+      "items": [
+        {
+          "name": "Perfume A",
+          "id": "1",
+          "price": 150,
           "quantity": 1
         },
         {
-          "name": "Item 2",
+          "name": "Oil Blend B",
           "id": "2",
           "price": 100,
           "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "reason": "Received the wrong item instead of what was ordered.",
+      "store_name": "Top Tato",
+      "store_logo": "https://dev-yamm-be-bucket.s3.ap-south-1.amazonaws.com/stores/17207125433519953418ad6a27561ce7c2d0b62922.png",
+      "store_url": "https://toptato.com",
+      "amount": 180,
+      "active": false,
+      "decision": "escalate",
+      "items": [
+        {
+          "name": "Tattoo Kit X",
+          "id": "1",
+          "price": 90,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "reason": "Item was defective and did not function as expected.",
+      "store_name": "سيار | Sayyar",
+      "store_logo": "https://media.zid.store/c05c0390-147b-456d-a367-d2600f2db848/87e960ab-7464-4a24-8a5a-b9ae97414b1e-200x.png",
+      "store_url": "https://sayyar.com/",
+      "amount": 300,
+      "active": false,
+      "decision": "escalate",
+      "items": [
+        {
+          "name": "Car Accessory A",
+          "id": "1",
+          "price": 150,
+          "quantity": 2
         }
       ]
     }

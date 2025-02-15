@@ -1,0 +1,94 @@
+.order_details {
+    background-color: rgba(266 100% 95.1% / 0.4);
+    .basic_details {
+        border-bottom: solid 1px rgba($color: #000000, $alpha: 0.2);
+        padding: 3rem 2rem;
+        h3 {
+            margin-top: 0;
+        }
+        .info_container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            .info {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                gap: 0.5rem;
+                border: solid 1px rgba($color: #000000, $alpha: 0.2);
+                border-radius: 8px;
+                padding: 12px;
+                background-color: #fff;
+                .label {
+                    font-weight: 600;
+                    color: rgb(121, 78, 219);
+                }
+                .value {
+                    color: rgba($color: #000000, $alpha: 0.8);
+                    img {
+                        width: 150px;
+                        height: auto;
+                    }
+                }
+            }
+        }
+    }
+    .items {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1rem;
+        margin-bottom: 2rem;
+        padding: 2rem;
+        h3 {
+            margin-top: 0;
+        }
+        .item {
+                display: flex;
+                justify-content: space-between;
+                gap: 0.5rem;
+                border: solid 1px rgba($color: #000000, $alpha: 0.2);
+                border-radius: 8px;
+                padding: 12px;
+                background-color: #fff;
+                .no {
+                    width: 20px;
+                    font-weight: 500;
+                }
+            .info {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                &.no {
+                    width: 5rem;
+                }
+                .label {
+                    font-weight: 600;
+                    color: rgb(121, 78, 219);
+                }
+                .value {
+                    color: rgba($color: #000000, $alpha: 0.9);
+                    img {
+                        width: 150px;
+                        height: auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .order_details {
+        .basic_details {
+            .info_container {
+                grid-template-columns: 1fr;
+            }
+        }
+        .items {
+            .item {
+                flex-wrap: wrap;
+                gap: 2rem;
+            }
+        }
+    }
+}

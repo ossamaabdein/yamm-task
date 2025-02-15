@@ -4,6 +4,7 @@ import Orders from "./pages/Orders";
 import Home from "./pages/Home";
 import Layout from "./components/layout/Layout";
 import Providers from "./Providers";
+import OrderDetails from "./components/orders/OrderDetails";
 function App() {
 	return (
 		<Providers>
@@ -12,6 +13,7 @@ function App() {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/orders" element={<Orders />} />
+						<Route path="/orders/:id" element={<OrderDetails />} />
 					</Routes>
 				</Layout>
 			</Router>

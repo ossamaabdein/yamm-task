@@ -14,6 +14,7 @@ import { generalPutRequest } from "../../utils/SendRequest";
 import { toast } from "react-toastify";
 import { ITable } from "./interfaces";
 import { Order } from "../orders/interfaces";
+import { Link } from "react-router-dom";
 
 interface Column {
 	id: keyof Data;
@@ -30,31 +31,28 @@ interface Data {
 
 const columns: readonly Column[] = [
 	{ id: "id", label: "id", minWidth: 50 },
-	{ id: "reason", label: "reason", minWidth: 100 },
-	{
-		id: "store_name",
-		label: "store name",
-		minWidth: 170,
-	},
 	{
 		id: "store_logo",
 		label: "Store logo",
-		minWidth: 80,
 	},
+	{
+		id: "store_name",
+		label: "store name",
+	},
+	{ id: "reason", label: "reason", minWidth: 100 },
 	{
 		id: "store_url",
 		label: "Store url",
-		minWidth: 170,
 	},
 	{
 		id: "amount",
 		label: "amount",
-		minWidth: 50,
+		minWidth: 30,
 	},
 	{
 		id: "items",
 		label: "items",
-		minWidth: 50,
+		minWidth: 30,
 	},
 ];
 
@@ -114,7 +112,7 @@ export default function GeneralTable({
 				[keyToChange]: updatedValue,
 			},
 			onSuccess: () => {
-				toast.success("Decision changed successfully");
+				toast.success("Order updated successfully");
 				setRefetchData && setRefetchData(new Date().getTime());
 			},
 			onError: () => {
@@ -196,7 +194,7 @@ export default function GeneralTable({
 									<TableCell key={1}>
 										<FormControlLabel
 											onChange={(e: any) => {
-												handleUpdateOrder("active", !e.target.value, row);
+												handleUpdateOrder("active", !row?.active, row);
 											}}
 											checked={row?.active}
 											control={<Switch />}
@@ -204,7 +202,9 @@ export default function GeneralTable({
 										/>
 									</TableCell>
 									<TableCell key={3}>
-										<InfoIcon />
+										<Link to={`/orders/${row?.id}`}>
+											<InfoIcon />
+										</Link>
 									</TableCell>
 								</TableRow>
 							);

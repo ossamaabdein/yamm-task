@@ -9,10 +9,6 @@ const Orders = () => {
 	const [rowsPerPage, setRowsPerPage] = useState(10);
 	const [refetchData, setRefetchData] = useState(false);
 
-	useEffect(() => {
-		console.log(activePage, rowsPerPage, "ROTTT");
-	}, [activePage, rowsPerPage]);
-
 	const { data, isLoading } = useQuery({
 		queryKey: ["orders-data", activePage, rowsPerPage, refetchData],
 		queryFn: () =>
