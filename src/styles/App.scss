@@ -3,3 +3,8 @@
 .App {
   text-align: center;
 }
+
+.Toastify__toast-theme--light {
+  background: rgb(242, 237, 254) !important;
+  color: rgba($color: #000000, $alpha: 0.7) !important;
+}

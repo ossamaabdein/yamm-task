@@ -47,7 +47,7 @@ const Orders = () => {
 	};
 
 	const columns: Column[] = [
-		{ id: "id", label: "id", minWidth: 50 },
+		{ id: "id", label: "ID", minWidth: 50 },
 		{
 			id: "store_logo",
 			label: "Store logo",
@@ -60,7 +60,7 @@ const Orders = () => {
 		{ id: "reason", label: "reason", minWidth: 100 },
 		{
 			id: "store_url",
-			label: "Store url",
+			label: "Store URL",
 		},
 		{
 			id: "amount",
