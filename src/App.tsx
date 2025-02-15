@@ -7,14 +7,14 @@ import Providers from "./Providers";
 function App() {
 	return (
 		<Providers>
-			<Layout>
-				<Router>
+			<Router>
+				<Layout>
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/orders" element={<Orders />} />
 					</Routes>
-				</Router>
-			</Layout>
+				</Layout>
+			</Router>
 		</Providers>
 	);
 }
