@@ -5,6 +5,22 @@ export interface ITable {
     totalCount: number;
     setRowsPerPage: (rows: number) => void;
     rowsPerPage: number;
-    setRefetchData?: (params: any) => void;
-    renderImgKeys?: string[] | number[];
+    actions?: any[];
+    columns: Column[];
+    imageKeys?: string[] | number[];
 }
+export interface Column {
+	id: string | number;
+	label: string;
+	minWidth?: number;
+	align?: "right";
+	format?: (value: number) => string;
+	totalCount?: number;
+  render?: (value: any, row: any) => React.ReactNode;
+}
+
+export interface TableAction<T> {
+    id: string;
+    label: string;
+    render: (row: T) => React.ReactNode;
+  }

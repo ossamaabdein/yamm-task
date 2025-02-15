@@ -27,8 +27,6 @@ export const generalGetRequest = async (
     throw {
       data: error.response?.data,
       message: error.message,
-      status: error.response?.status,
-      statusText: error.response?.statusText,
     }
   }
 }
@@ -76,11 +74,9 @@ export const generalPutRequest = async (props: {
   onFinish?: () => void
 }) => {
   const { route, values, onSuccess, onError, onFinish } = props
-  // const formData = new FormData()
   const response = await axiosInstance
     .put(route, values, {
       headers: {
-        // Authorization: props.auth ? `Bearer ${JSON.parse(user).token}` : "",
         "Content-Type": "application/json",
       },
     })

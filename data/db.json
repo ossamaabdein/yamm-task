@@ -8,7 +8,7 @@
       "store_url": "https://dkhoonemirates.com/",
       "amount": 250,
       "active": false,
-      "decision": "",
+      "decision": "accept",
       "items": [
         {
           "name": "Perfume A",
@@ -31,8 +31,8 @@
       "store_logo": "https://dev-yamm-be-bucket.s3.ap-south-1.amazonaws.com/stores/17207125433519953418ad6a27561ce7c2d0b62922.png",
       "store_url": "https://toptato.com",
       "amount": 180,
-      "active": true,
-      "decision": "escalate",
+      "active": false,
+      "decision": "reject",
       "items": [
         {
           "name": "Tattoo Kit X",
@@ -49,8 +49,8 @@
       "store_logo": "https://media.zid.store/c05c0390-147b-456d-a367-d2600f2db848/87e960ab-7464-4a24-8a5a-b9ae97414b1e-200x.png",
       "store_url": "https://sayyar.com/",
       "amount": 300,
-      "active": true,
-      "decision": "reject",
+      "active": false,
+      "decision": "",
       "items": [
         {
           "name": "Car Accessory A",
@@ -68,7 +68,7 @@
       "store_url": "https://mawsim.app",
       "amount": 120,
       "active": false,
-      "decision": "escalate",
+      "decision": "reject",
       "items": [
         {
           "name": "Scarf Y",
@@ -109,7 +109,7 @@
       "amount": 190,
       "store_logo": "https://media.zid.store/455317b3-0ba1-4870-8c41-3eb175b55227/a1dfa7a7-6659-4848-a946-29be3df008bd-200x.png",
       "store_url": "https://warazan.com/",
-      "active": true,
+      "active": false,
       "decision": "escalate",
       "items": [
         {

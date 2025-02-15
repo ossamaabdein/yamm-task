@@ -12,37 +12,41 @@ const SelectDropdown = ({
 	index,
 	action,
 	options,
-    placeholder,
+	placeholder,
 	row,
-	keyToChange
+	keyToChange,
+	label,
 }: {
-	index: number;
+	index?: number;
 	action?: (key: string, updatedValue: any, row: Order) => void;
 	options?: { label: string; value: string | number }[];
-    placeholder?: string
-	row?: any
-	keyToChange: string
+	placeholder?: string;
+	row?: any;
+	keyToChange: string;
+	label?: string;
 }) => {
-	const [decision, setDecision] = useState(row?.decision || "");
+	const [selectedValue, setSelectedValue] = useState(row?.[keyToChange] || "");
 
 	const handleChange = (event: SelectChangeEvent) => {
-		setDecision(event.target.value as string);
+		setSelectedValue(event.target.value as string);
 		action && action(keyToChange, event.target.value as string, row);
 	};
 
 	return (
 		<FormControl fullWidth>
-			<InputLabel id={`demo-simple-select-${index}`}>{placeholder}</InputLabel>
+			<InputLabel id={`select-${index}`}>{placeholder}</InputLabel>
 			<Select
-				labelId={`demo-simple-select-${index}`}
-				id={`demo-simple-select-${index}`}
-				value={decision}
-				label="Decision"
+				labelId={`select-${index}`}
+				id={`select-${index}`}
+				value={selectedValue}
+				label={label}
 				onChange={handleChange}
 			>
 				{options &&
 					options?.map((option) => (
-						<MenuItem value={option.value} key={option.value}>{option.label}</MenuItem>
+						<MenuItem value={option.value} key={option.value}>
+							{option.label}
+						</MenuItem>
 					))}
 			</Select>
 		</FormControl>
