@@ -6,4 +6,5 @@ export interface ITable {
     setRowsPerPage: (rows: number) => void;
     rowsPerPage: number;
     setRefetchData?: (params: any) => void;
+    renderImgKeys?: string[] | number[];
 }

@@ -38,6 +38,17 @@
                     background-color: rgb(242 237 254);
                 }
             }
+            .MuiTableBody-root {
+                .MuiTableRow-root {
+                    .MuiTableCell-root  {
+                        img {
+                            width: 80px;
+                            height: 90%;
+                            object-fit: contain;
+                        }
+                    }
+                }
+            }
         }
     }
 }
